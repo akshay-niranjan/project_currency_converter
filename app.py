@@ -47,7 +47,7 @@ def fetch_conversion_factor(source,target):
         # conversion_key=f"{source}{target}"
         # rate=quotes.get(conversion_key,None)
         # return rate
-        return data['{}_{}'.format(source,target)
+        return data['{}_{}'.format(source,target)]
         
     except Exception as e:
         print("Error fetching conversion rate:", str(e))
