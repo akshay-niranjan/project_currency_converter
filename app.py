@@ -21,7 +21,7 @@ def index():
         # print(amount)
         # print(target_currency)
         cf = fetch_conversion_factor(source_currency,target_currency)  # using conversion api
-        if conversion_rate is None:
+        if cf is None:
             return jsonify({"fulfillmentText": f"Conversion rate for {source_currency} to {target_currency} not found."}), 400
 
         # print("cf",cf)
