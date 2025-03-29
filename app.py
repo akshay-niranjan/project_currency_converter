@@ -22,7 +22,7 @@ def fetch_conversion_factor(source,target):
     response=requests.get(url)
     data=response.json()
     quotes=data.get("quotes",{})
-    conversion_key=f"{FROM_CURRENCY}{TO_CURRENCY}"
+    conversion_key=f"{source}{target}"
     rate=quotes[conversion_key]
     return rate
 if __name__ == "__main__":
