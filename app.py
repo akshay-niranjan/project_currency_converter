@@ -6,6 +6,8 @@ app = Flask(__name__)
 @app.route('/',methods=['POST'])
 def index():
     data=request.get_json()
+    if not data:
+            return {"fulfillmentText": "Invalid request. No JSON received."}, 400
     source_currency=data['queryResult']['parameters']['unit-currency']['currency']
     amount=data['queryResult']['parameters']['unit-currency']['amount']
     target_currency=data['queryResult']['parameters']['currency-name']
