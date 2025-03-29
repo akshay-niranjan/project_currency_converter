@@ -43,11 +43,12 @@ def fetch_conversion_factor(source,target):
             return None  # Return None if API fails
         data=response.json()
         print(data)
+        conv=data['results']
         # quotes=data.get("quotes",{})
         # conversion_key=f"{source}{target}"
         # rate=quotes.get(conversion_key,None)
         # return rate
-        return data['{}_{}'.format(source,target)]
+        return conv
         
     except Exception as e:
         print("Error fetching conversion rate:", str(e))
