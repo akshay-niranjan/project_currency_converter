@@ -37,15 +37,17 @@ def index():
         return {"fulfillmentText": f"Internal Server Error: {str(e)}"}, 500
 def fetch_conversion_factor(source,target):
     try:
-        url="https://currencyconversionapi.com/api/v1/live?access_key=46ddee37c04ebb446376e21613d3bfff"
+        url="https://api.fastforex.io/fetch-multi?from={}&to={}&api_key=c202d63af1-081d1a58b2-stvtbj".format(source,target)
         response=requests.get(url)
         if response.status_code != 200:
             return None  # Return None if API fails
         data=response.json()
-        quotes=data.get("quotes",{})
-        conversion_key=f"{source}{target}"
-        rate=quotes.get(conversion_key,None)
-        return rate
+        print(data)
+        # quotes=data.get("quotes",{})
+        # conversion_key=f"{source}{target}"
+        # rate=quotes.get(conversion_key,None)
+        # return rate
+        return data['{}_{}'.format(source,target)
         
     except Exception as e:
         print("Error fetching conversion rate:", str(e))
